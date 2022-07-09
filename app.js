@@ -16,7 +16,30 @@ const fetchProducts = async () => {
 
 // render function
 const displayProducts = (list) => {
-  console.log(list);
+  const productList = list
+    .map((product) => {
+      const { id } = product;
+      const { name: title, price } = product.fields;
+      const { url: img } = product.fields.image[0];
+
+      const formatPrice = price / 100;
+
+      // id, name, price, img
+      return ` <a class="single-product" href="product.html">
+        <img src="${img}" class="single-product-img img" alt="${title}" />
+        <div class="product-details">
+            <h5 class="name">${title}</h5>
+            <span class="price"> $${formatPrice}</span>
+        </div>
+    </a> `;
+    })
+    .join("");
+  productsDom.innerHTML = `  <div class="products-container">
+          ${productList}
+          
+    </div>
+    
+    `;
 };
 
 // root function
