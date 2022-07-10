@@ -34,6 +34,7 @@ const displayProducts = (list) => {
     </a> `;
     })
     .join("");
+
   productsDom.innerHTML = `  <div class="products-container">
           ${productList}
           
